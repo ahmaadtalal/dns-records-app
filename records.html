@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Records Table</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Domain Records</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Domain Name</th>
+                    <th>IP Address</th>
+                    <th>IP Class</th>
+                </tr>
+            </thead>
+            <tbody id="recordsTableBody"></tbody>
+        </table>        
+        <button onclick="navigateBack()">Back</button>
+    </div>
+
+    <script>
+        // Function to fetch and display records
+        async function displayRecords() {
+            const recordsList = document.getElementById("recordsTableBody");
+            try {
+                const response = await fetch('fetch_records.php'); // Fetch data from the PHP file
+                
+                // Check if the response is valid
+                if (!response.ok) {
+                    console.error("Failed to fetch records");
+                    return;
+                }
+
+                const records = await response.json(); // Parse the response to JSON
+
+                // Clear the table before adding new rows
+                recordsList.innerHTML = "";
+
+                // Loop through the records and add them to the table
+                records.forEach((record, index) => {
+                    const row = `
+                        <tr>
+                            <td>${index + 1}</td>
+                            <td>${record.DomainName}</td>
+                            <td>${record.IPAddress}</td>
+                            <td>${record.IPClass}</td>
+                        </tr>
+                    `;
+                    recordsList.innerHTML += row;
+                });
+            } catch (error) {
+                console.error("Error fetching records:", error);
+            }
+        }
+
+        // Automatically call the displayRecords function when the page loads
+        window.onload = displayRecords;
+
+        // Function to navigate back to display.html
+        function navigateBack() {
+            window.location.href = "display.html";
+        }
+    </script>
+</body>
+</html>

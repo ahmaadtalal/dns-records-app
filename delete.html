@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete DNS Record</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Delete DNS Record</h2>
+        <form action="delete_record.php" method="GET">
+            <label for="domainName">Domain Name to delete:</label>
+            <input type="text" id="domainName" name="domainName" required><br><br>
+
+            <button type="submit">Delete Record</button>
+        </form>
+        <button onclick="navigateBack()">Back</button>
+    </div>
+    <script>
+        // Navigate back to display.html
+        function navigateBack() {
+            window.location.href = "display.html";
+        }
+    </script>
+</body>
+</html>

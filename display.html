@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Records</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>All Records</h2>
+        <button onclick="loadRecords()">Load Records</button>
+        <button onclick="navigateBack()">Back to Options</button>
+    </div>
+    <script>
+        function loadRecords() {
+            window.location.href = "records.html";
+        }
+        function navigateBack() {
+            window.location.href = "options.html";
+        }
+    </script>
+</body>
+</html>
